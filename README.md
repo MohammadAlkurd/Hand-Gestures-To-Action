@@ -25,7 +25,6 @@ hand_gestures_ai/
 ├── settings.yaml              # user/app settings
 ├── gesture_model.pth          # trained model weights
 ├── hand_landmarker.task       # hand landmark detection model
-├── hand_gestures.ipynb        # exploration / experimentation notebook
 ├── cache/                     # cached landmark samples per gesture
 ├── config/                    # config module
 ├── models/                    # saved models
