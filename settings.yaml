@@ -1,0 +1,28 @@
+# Gesture recognition project settings
+project:
+  name: "Gesture Recognizer"
+  version: "0.1.0"
+
+data:
+  datasets_root: "./datasets"
+  cache_root: "./cache"
+  video_frame_skip: 5          # Process every Nth frame to reduce workload
+  max_frames_per_video: 300    # Safety limit per video
+
+model:
+  checkpoint_path: "./models/gesture_classifier.pt"
+  device: "cuda"               # Auto-select GPU if available
+  input_dim: 63                # Normalized landmarks: 21 joints × 3 coords
+
+ui:
+  window_title: "Gesture Recognizer UI"
+  min_window_size: [800, 600]
+  gestures_panel_enabled: true
+
+keybinds:
+  path: "./config/default.yaml"
+
+gesture_settings:
+  store_path: "./config/gestures.json"  # File storing all gesture bindings
+  pulse_interval_seconds: 0.5           # Interval between repeats when key_mode is "pulse"
+  cooldown_seconds: 2                   # Default cooldown after a single trigger
