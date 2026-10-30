@@ -24,6 +24,12 @@ Each gesture binds to either a **keypress** or a **custom script**, with per-ges
 - **Cooldown after release** — minimum seconds before the action can fire again.
 - **Start after held for** — the pose must be held this long before the action triggers, which filters out accidental detections.
 
+## Demo
+
+Pointing up pulses the volume up (OSD shows it climbing), an open palm is detected as `stop`, with confidence scores live below the feed:
+
+![Live gesture detection firing bound actions](docs/demo.gif)
+
 ## Screenshots
 
 | Main window — gesture bindings and live preview | Gesture dialog — action configuration |
