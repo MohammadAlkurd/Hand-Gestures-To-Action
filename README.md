@@ -19,12 +19,12 @@ A PyQt6 desktop app that recognizes custom hand gestures from your webcam and bi
 ## Project structure
 
 ```
-hand_gestures_ai/
+Hand-Gestures-To-Action/
 ├── main.py                    # app entry point, system tray + QApplication setup
 ├── config.py                  # settings, GestureMLP model definition, device setup
 ├── settings.yaml              # user/app settings
 ├── gesture_model.pth          # trained model weights
-├── hand_landmarker.task       # hand landmark detection model
+├── hand_landmarker.task       # pretrained hand-landmark model (Google MediaPipe)
 ├── cache/                     # cached landmark samples per gesture
 ├── config/                    # config module
 ├── models/                    # saved models
@@ -69,9 +69,13 @@ python main.py
 4. Assign a keypress or script action to the gesture.
 5. Uncheck **Test mode** to enable live actions from the system tray app.
 
-## Disclaimer
+## Safety note
 
-This project was built with substantial assistance from **Claude Sonnet 5** (Anthropic), used as an AI pair-programmer for design, implementation, and debugging throughout development. Review the code before using it in any sensitive or production environment.
+Gestures can be bound to arbitrary keypresses and scripts that run on your machine. Keep **Test mode** on while adding or tuning gestures, and review any script you bind before enabling live actions.
+
+## AI usage
+
+This project was built with substantial assistance from **Claude** (Anthropic) as an AI pair-programmer for design, implementation, and debugging.
 
 ## License
 
