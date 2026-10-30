@@ -1,12 +1,12 @@
 # Hand Gestures AI
 
-A PyQt6 desktop app that recognizes custom hand gestures from your webcam and binds them to keypresses or scripts. Record a gesture, train a classifier on it, assign an action, and the app fires that action live whenever it detects the gesture.
+A PyQt6 desktop app that recognizes custom hand gestures from your webcam and binds them to keypresses or scripts. Gestures are **static hand poses** — think a stop sign, a peace sign, a thumbs up — not movements. Record a pose, train a classifier on it, assign an action, and the app fires that action live whenever it detects the pose.
 
 ## How it works
 
-1. **Record** — capture a short video (webcam or imported file) of yourself performing a gesture.
-2. **Train** — hand landmarks are extracted (via a hand landmark model) and a small MLP classifier is trained/updated on them.
-3. **Bind** — assign each gesture to a keypress or a custom action in the gestures panel.
+1. **Record** — capture a short clip (5 s max, webcam or imported file) of yourself holding the pose. Moving your hand slightly while recording gives the model varied samples.
+2. **Train** — hand landmarks are extracted with a pretrained [MediaPipe hand-landmark model](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker) and a small MLP classifier is trained/updated on them.
+3. **Bind** — assign each gesture an action in the gestures panel (see below).
 4. **Run** — with Test mode off, the inference loop dispatches the bound action live as gestures are recognized.
 
 ## UI overview
@@ -15,6 +15,20 @@ A PyQt6 desktop app that recognizes custom hand gestures from your webcam and bi
 - **Camera preview**: live feed with the current prediction and confidence shown below it.
 - **Test mode**: when checked, predictions are shown but no actions are triggered — safe for trying out new gestures.
 - **Record / Import video**: record live (5s max) or import an existing video file as training data.
+
+### Actions
+
+Each gesture binds to either a **keypress** or a **custom script**, with per-gesture tuning:
+
+- **Key mode** — `normal` (fire once per detection) or `pulse` (repeated presses while the pose is held, at a configurable presses/second rate — useful for things like volume or scrolling).
+- **Cooldown after release** — minimum seconds before the action can fire again.
+- **Start after held for** — the pose must be held this long before the action triggers, which filters out accidental detections.
+
+## Screenshots
+
+| Main window — gesture bindings and live preview | Gesture dialog — action configuration |
+|---|---|
+| ![Main UI](docs/main-ui.png) | ![Gesture dialog](docs/gesture-dialog.png) |
 
 ## Project structure
 
