@@ -95,7 +95,11 @@ Gestures can be bound to arbitrary keypresses and scripts that run on your machi
 
 ## AI usage
 
-This project was built with substantial assistance from **Claude** (Anthropic) as an AI pair-programmer for design, implementation, and debugging.
+I used Claude (Anthropic) to help write and debug the code. The design, the pipeline (record, train, bind to an action) and the feature list are mine.
+
+## Why landmarks instead of a CNN
+
+I first trained a CNN on raw webcam frames, but accuracy was low. I switched to MediaPipe hand landmarks with a small MLP on top, which works much better with only a short recording per gesture. Landmarks are randomly mirrored during training so the same gesture works with either hand.
 
 ## License
 
